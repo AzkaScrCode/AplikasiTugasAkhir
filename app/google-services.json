@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "159983628083",
+    "project_id": "aplikasitugasakhir",
+    "storage_bucket": "aplikasitugasakhir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159983628083:android:20792dc6f8a61099b95846",
+        "android_client_info": {
+          "package_name": "com.example.aplikasitugasakhir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159983628083-r826lpk61fm36181hn5ispcp8peehfc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwviOcm2fi5bt-PJ3CQOwtQWms1NBlLOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159983628083-r826lpk61fm36181hn5ispcp8peehfc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

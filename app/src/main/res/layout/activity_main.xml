@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PREDIKSI AWAL TANAM TANAMAN PADI LAHAN RAWA LEBAK TENGAHAN"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bt_inputmn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Input Manual"
+            android:background="@drawable/button"
+            />
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_tambahprediksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prediksi"
+            android:background="@drawable/button"
+            />
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_ubahdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubah Data"
+            android:background="@drawable/button"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
