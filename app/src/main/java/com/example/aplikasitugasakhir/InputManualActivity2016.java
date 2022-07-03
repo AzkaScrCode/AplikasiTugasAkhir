@@ -69,6 +69,7 @@ public class InputManualActivity2016 extends AppCompatActivity {
                 NetLaju netLaju = new NetLaju(hari16,nlaju16);
 
                 reference.child(id).setValue(netLaju);
+
             }
         });
     }
