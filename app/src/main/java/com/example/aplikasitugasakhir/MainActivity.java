@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button tbmanual, tbprediksi, ubahpre;
+    private Button tbmanual, tbprediksi, ubahpre, mBtnLiatPrediksi;
 
     @Override
     public void onBackPressed() {
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         tbmanual = findViewById(R.id.bt_inputmn);
         tbprediksi = findViewById(R.id.bt_tambahprediksi);
         ubahpre = findViewById(R.id.bt_ubahdata);
+        mBtnLiatPrediksi = findViewById(R.id.bt_liat_prediksi);
 
         tbmanual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbahActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnLiatPrediksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), GraphPrediksiActivity.class);
                 startActivity(intent);
             }
         });

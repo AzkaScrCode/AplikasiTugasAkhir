@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplikasiTugasAkhir">
         <activity
+            android:name=".GraphPrediksiActivity"
+            android:exported="false" />
+        <activity
             android:name=".InputManual2022Activity"
             android:exported="false" />
         <activity
