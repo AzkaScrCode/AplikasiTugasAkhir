@@ -2,6 +2,7 @@ package com.example.aplikasitugasakhir;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +16,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class PrediksiActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,12 +39,19 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
+    private Retrofit retrofit;
+    private FcmService fcmService;
+
+
     private static final String TAG = "prediksi";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prediksi);
+
+        retrofit = ApiClient.getInstance();
+        fcmService = retrofit.create(FcmService.class);
 
         mSpinnerYear = findViewById(R.id.spinner);
         mSpinnerPeriode = findViewById(R.id.spinner2);
@@ -104,6 +120,22 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
 
                 DatabaseReference ref = database.getReference("Net Laju Tahun " + yearSpinner);
                 ref.setValue(netLajus);
+
+                Notification notification = new Notification("Data prediksi tahun " + year + " sudah di update",
+                        "Petani");
+                MessageFcm messageFcm = new MessageFcm("/topics/petani",notification);
+
+                fcmService.sendMessage(messageFcm).enqueue(new Callback<MessageFcmResponse>() {
+                    @Override
+                    public void onResponse(Call<MessageFcmResponse> call, Response<MessageFcmResponse> response) {
+                        Log.d(TAG, "onResponse: " + response.code());
+                    }
+
+                    @Override
+                    public void onFailure(Call<MessageFcmResponse> call, Throwable t) {
+                        Log.e("ERRORX", "onFailure: " + t.getMessage() );
+                    }
+                });
 
             }
 
