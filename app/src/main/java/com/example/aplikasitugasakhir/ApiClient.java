@@ -26,7 +26,7 @@ public class ApiClient {
                     public Response intercept(Chain chain) throws IOException {
                         Request request = chain.request().newBuilder()
                                 .addHeader("Accept", "application/json")
-                                .addHeader("Authorization","key=AAAAJT_EbzM:APA91bEr9Gb8xX4eqJwJAczeWW-lYn9IVuDSbKdJzdssPRJo7yCsoJR5JDCTX2kbp32u35WsQ5BF4Awq2CmJUo0yBsHm0cHz7mInHMPlFSwzl-VlsS7XWq4DOv2MEedmQ7PbrfAqbeZ3")
+                                .addHeader("Authorization","key=")
                                 .build();
                         return chain.proceed(request);
                     }
