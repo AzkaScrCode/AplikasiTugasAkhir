@@ -53,6 +53,15 @@
             android:background="@drawable/button"
             />
 
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_input_water_req"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Input Water Req"
+            android:background="@drawable/button"
+            />
+
     </LinearLayout>
 
 </RelativeLayout>

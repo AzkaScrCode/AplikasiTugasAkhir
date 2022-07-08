@@ -3,9 +3,7 @@ package com.example.aplikasitugasakhir;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,14 +15,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UbahActivity extends AppCompatActivity implements View.OnClickListener {
+public class WaterAvailability extends AppCompatActivity implements View.OnClickListener {
 
 
     private FirebaseDatabase database;
@@ -35,7 +31,7 @@ public class UbahActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ubah);
+        setContentView(R.layout.activity_water_availability);
 
         btnHitungWet = findViewById(R.id.button_hitung_wet);
         btnHitungWet.setOnClickListener(this);
@@ -100,7 +96,8 @@ public class UbahActivity extends AppCompatActivity implements View.OnClickListe
                     double normalVal = floats.get(pickNormal-1);
                     double basahVal = floats.get(pickBasah-1);
 
-                    WetNormalDry wetNormalDry = new WetNormalDry(entry.getKey(), basahVal, normalVal, keringVal);
+                    WetNormalDry wetNormalDry = new WetNormalDry(entry.getKey(), basahVal,
+                            normalVal, keringVal);
                     wets.add(wetNormalDry);
                 }
 

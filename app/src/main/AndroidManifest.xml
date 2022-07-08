@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplikasiTugasAkhir">
         <activity
+            android:name=".WaterRequirementActivity"
+            android:exported="false" />
+        <activity
             android:name=".GraphPrediksiActivity"
             android:exported="false" />
         <activity
@@ -36,7 +39,7 @@
             android:name=".InputManualActivity2017"
             android:exported="false" />
         <activity
-            android:name=".UbahActivity"
+            android:name=".WaterAvailability"
             android:exported="false" />
         <activity
             android:name=".PrediksiActivity"

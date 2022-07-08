@@ -5,6 +5,13 @@ public class WetNormalDry {
     private double wet;
     private double normal;
     private double dry;
+    private double waterReq;
+    private double wetBalance;
+    private double normalBalance;
+    private double dryBalance;
+    private String wetStatus;
+    private String normalStatus;
+    private String dryStatus;
 
     public WetNormalDry() {
     }
@@ -46,5 +53,61 @@ public class WetNormalDry {
 
     public void setDry(double dry) {
         this.dry = dry;
+    }
+
+    public double getWaterReq() {
+        return waterReq;
+    }
+
+    public void setWaterReq(double waterReq) {
+        this.waterReq = waterReq;
+    }
+
+    public double getWetBalance() {
+        return wetBalance;
+    }
+
+    public void setWetBalance(double wetBalance) {
+        this.wetBalance = wetBalance;
+    }
+
+    public double getNormalBalance() {
+        return normalBalance;
+    }
+
+    public void setNormalBalance(double normalBalance) {
+        this.normalBalance = normalBalance;
+    }
+
+    public double getDryBalance() {
+        return dryBalance;
+    }
+
+    public void setDryBalance(double dryBalance) {
+        this.dryBalance = dryBalance;
+    }
+
+    public String getWetStatus() {
+        return wetStatus;
+    }
+
+    public void setWetStatus(String wetStatus) {
+        this.wetStatus = wetStatus;
+    }
+
+    public String getNormalStatus() {
+        return normalStatus;
+    }
+
+    public void setNormalStatus(String normalStatus) {
+        this.normalStatus = normalStatus;
+    }
+
+    public String getDryStatus() {
+        return dryStatus;
+    }
+
+    public void setDryStatus(String dryStatus) {
+        this.dryStatus = dryStatus;
     }
 }
