@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.aplikasitugasakhir.model.NetLaju;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

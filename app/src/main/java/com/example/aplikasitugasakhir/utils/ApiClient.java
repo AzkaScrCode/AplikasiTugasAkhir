@@ -1,4 +1,4 @@
-package com.example.aplikasitugasakhir;
+package com.example.aplikasitugasakhir.utils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

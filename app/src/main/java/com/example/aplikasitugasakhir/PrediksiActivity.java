@@ -2,29 +2,29 @@ package com.example.aplikasitugasakhir;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.example.aplikasitugasakhir.model.MessageFcm;
+import com.example.aplikasitugasakhir.model.MessageFcmResponse;
+import com.example.aplikasitugasakhir.model.NetLaju;
+import com.example.aplikasitugasakhir.model.Notification;
+import com.example.aplikasitugasakhir.services.FcmService;
+import com.example.aplikasitugasakhir.utils.ApiClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,7 +88,9 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
                     for (DataSnapshot item : snapshot.child(tahun).getChildren()) {
 
                         Long hari = item.child("hari").getValue(Long.class);
-                        Float netLaju = item.child("netLaju").getValue(Float.class);
+                        Object o = item.child("netLaju").getValue();
+                        String netLajuStr = String.valueOf(o);
+                        Float netLaju = Float.valueOf(netLajuStr);
 
                         if (nets.get(hari) == null) {
                             List<Float> floats = new ArrayList<>();

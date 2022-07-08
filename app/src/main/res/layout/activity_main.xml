@@ -37,10 +37,10 @@
             />
         <Button
             android:layout_marginTop="20dp"
-            android:id="@+id/bt_ubahdata"
+            android:id="@+id/bt_wet_dry_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ubah Data"
+            android:text="Hitung Wet, Dry, Normal"
             android:background="@drawable/button"
             />
 
@@ -50,6 +50,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lihat Prediksi"
+            android:background="@drawable/button"
+            />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_input_water_req"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Input Water Req"
             android:background="@drawable/button"
             />
 

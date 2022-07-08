@@ -5,20 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button tbmanual, tbprediksi, ubahpre, mBtnLiatPrediksi;
+    private Button tbmanual, tbprediksi, btWetDryNormal, mBtnLiatPrediksi, mBtnWaterReq;
 
     @Override
     public void onBackPressed() {
@@ -45,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         tbmanual = findViewById(R.id.bt_inputmn);
         tbprediksi = findViewById(R.id.bt_tambahprediksi);
-        ubahpre = findViewById(R.id.bt_ubahdata);
+        btWetDryNormal = findViewById(R.id.bt_wet_dry_normal);
         mBtnLiatPrediksi = findViewById(R.id.bt_liat_prediksi);
+        mBtnWaterReq = findViewById(R.id.bt_input_water_req);
 
         tbmanual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ubahpre.setOnClickListener(new View.OnClickListener() {
+        btWetDryNormal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UbahActivity.class);
+                Intent intent = new Intent(v.getContext(), WaterAvailabilityActivity.class);
                 startActivity(intent);
             }
         });
@@ -76,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), GraphPrediksiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnWaterReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WaterRequirementActivity.class);
                 startActivity(intent);
             }
         });
