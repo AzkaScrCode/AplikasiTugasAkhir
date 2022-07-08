@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasitugasakhir.model.WetNormalDry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,19 +22,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WaterAvailability extends AppCompatActivity implements View.OnClickListener {
+public class WaterAvailabilityActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
     private Button btnHitungWet;
+    private Spinner mSpinnerWaterAvailYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_availability);
 
+        mSpinnerWaterAvailYear = findViewById(R.id.spinner_tahun_water_avail);
         btnHitungWet = findViewById(R.id.button_hitung_wet);
         btnHitungWet.setOnClickListener(this);
 
@@ -44,8 +48,10 @@ public class WaterAvailability extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
 
+        String yearSpinner = (String) mSpinnerWaterAvailYear.getSelectedItem();
+
         int initYear = 1988;
-        int year = 2022;
+        int year = Integer.valueOf(yearSpinner);
 
         database.getReference().addValueEventListener(new ValueEventListener() {
             @Override
@@ -102,8 +108,8 @@ public class WaterAvailability extends AppCompatActivity implements View.OnClick
                 }
 
 
-                DatabaseReference ref = database.getReference();
-                ref.child("air wet normal " + year).setValue(wets);
+                DatabaseReference ref = database.getReference("air wet normal " + year);
+                ref.setValue(wets);
 
                 Toast.makeText(view.getContext(),"Success", Toast.LENGTH_SHORT).show();
             }

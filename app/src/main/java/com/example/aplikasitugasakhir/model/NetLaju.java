@@ -1,4 +1,4 @@
-package com.example.aplikasitugasakhir;
+package com.example.aplikasitugasakhir.model;
 
 public class NetLaju {
     int Hari;

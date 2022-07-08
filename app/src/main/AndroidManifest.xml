@@ -39,7 +39,7 @@
             android:name=".InputManualActivity2017"
             android:exported="false" />
         <activity
-            android:name=".WaterAvailability"
+            android:name=".WaterAvailabilityActivity"
             android:exported="false" />
         <activity
             android:name=".PrediksiActivity"

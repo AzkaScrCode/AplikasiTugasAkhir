@@ -1,4 +1,6 @@
-package com.example.aplikasitugasakhir;
+package com.example.aplikasitugasakhir.model;
+
+import com.example.aplikasitugasakhir.model.Notification;
 
 public class MessageFcm {
     private String to;

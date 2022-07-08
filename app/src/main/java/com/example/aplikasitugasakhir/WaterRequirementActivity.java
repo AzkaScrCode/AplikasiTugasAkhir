@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
+import com.example.aplikasitugasakhir.model.WetNormalDry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +26,10 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private EditText et1,et2,et3,et4,et5,et6,et7,et8,et9,et10,et11,et12;
 
     private Button mBtnHitunRequirement;
+    private Spinner mSpinnerYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,28 +38,42 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
 
         database = FirebaseDatabase.getInstance();
 
-        mBtnHitunRequirement = findViewById(R.id.button_hitung_requirement);
-        mBtnHitunRequirement.setOnClickListener(this);
+        et1 = findViewById(R.id.et_watreq_1);
+        et2 = findViewById(R.id.et_watreq_2);
+        et3 = findViewById(R.id.et_watreq_3);
+        et4 = findViewById(R.id.et_watreq_4);
+        et5 = findViewById(R.id.et_watreq_5);
+        et6 = findViewById(R.id.et_watreq_6);
+        et7 = findViewById(R.id.et_watreq_7);
+        et8 = findViewById(R.id.et_watreq_8);
+        et9 = findViewById(R.id.et_watreq_9);
+        et10 = findViewById(R.id.et_watreq_10);
+        et11 = findViewById(R.id.et_watreq_11);
+        et12 = findViewById(R.id.et_watreq_12);
 
+        mSpinnerYear = findViewById(R.id.spinner_tahun_wat_req);
+        mBtnHitunRequirement = findViewById(R.id.bt_calculate_req);
+        mBtnHitunRequirement.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         Map<Integer, Double> map = new HashMap<>();
-        int year = 2022;
+        String yearSpinner = (String) mSpinnerYear.getSelectedItem();
+        int year = Integer.valueOf(yearSpinner);
 
-        map.put(1,1.22);
-        map.put(2,2.22);
-        map.put(3,3.22);
-        map.put(4,4.22);
-        map.put(5,5.22);
-        map.put(6,6.22);
-        map.put(7,7.22);
-        map.put(8,8.22);
-        map.put(9,9.22);
-        map.put(10,10.22);
-        map.put(11,11.22);
-        map.put(12,12.22);
+        map.put(1,Double.valueOf(et1.getText().toString()));
+        map.put(2,Double.valueOf(et2.getText().toString()));
+        map.put(3,Double.valueOf(et3.getText().toString()));
+        map.put(4,Double.valueOf(et4.getText().toString()));
+        map.put(5,Double.valueOf(et5.getText().toString()));
+        map.put(6,Double.valueOf(et6.getText().toString()));
+        map.put(7,Double.valueOf(et7.getText().toString()));
+        map.put(8,Double.valueOf(et8.getText().toString()));
+        map.put(9,Double.valueOf(et9.getText().toString()));
+        map.put(10,Double.valueOf(et10.getText().toString()));
+        map.put(11,Double.valueOf(et11.getText().toString()));
+        map.put(12,Double.valueOf(et12.getText().toString()));
 
         DatabaseReference reference = database.getReference("air wet normal " + year);
 
@@ -129,8 +148,9 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
 
                 }
 
-                DatabaseReference ref = database.getReference();
-                ref.child("air wet normal " + year).setValue(wetNormalDries);
+                DatabaseReference ref = database.getReference("water-requirements " + year);
+                //ref.child("water-requirements " + year).setValue(wetNormalDries);
+                ref.setValue(wetNormalDries);
 
             }
 

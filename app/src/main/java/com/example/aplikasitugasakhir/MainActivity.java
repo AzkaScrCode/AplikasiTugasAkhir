@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         btWetDryNormal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WaterAvailability.class);
+                Intent intent = new Intent(v.getContext(), WaterAvailabilityActivity.class);
                 startActivity(intent);
             }
         });
