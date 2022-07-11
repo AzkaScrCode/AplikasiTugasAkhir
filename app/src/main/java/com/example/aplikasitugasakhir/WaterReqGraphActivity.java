@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,9 +73,17 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
         String year = (String) mSpinnerYear.getSelectedItem();
 
         reference = database.getReference("water-requirements " + year);
+
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(!snapshot.hasChildren()){
+                    Toast.makeText(view.getContext(), "data di tahun tsb tidak ditemukan",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 DataPoint[] dp = new DataPoint[(int) snapshot.getChildrenCount()];
                 DataPoint[] dp2 = new DataPoint[(int) snapshot.getChildrenCount()];
                 DataPoint[] dp3 = new DataPoint[(int) snapshot.getChildrenCount()];
