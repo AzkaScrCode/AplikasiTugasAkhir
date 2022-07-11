@@ -12,6 +12,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button tbmanual, tbprediksi, btWetDryNormal, mBtnLiatPrediksi, mBtnWaterReq;
+    private Button mBtnGraphicWaterReq;
 
     @Override
     public void onBackPressed() {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btWetDryNormal = findViewById(R.id.bt_wet_dry_normal);
         mBtnLiatPrediksi = findViewById(R.id.bt_liat_prediksi);
         mBtnWaterReq = findViewById(R.id.bt_input_water_req);
+        mBtnGraphicWaterReq = findViewById(R.id.bt_graphic_water_req);
 
         tbmanual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WaterRequirementActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnGraphicWaterReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WaterReqGraphActivity.class);
                 startActivity(intent);
             }
         });
