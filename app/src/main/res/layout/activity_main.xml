@@ -71,6 +71,15 @@
             android:background="@drawable/button"
             />
 
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_moving_avg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Moving Average"
+            android:background="@drawable/button"
+            />
+
     </LinearLayout>
 
 </RelativeLayout>
