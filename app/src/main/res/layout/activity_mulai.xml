@@ -23,18 +23,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/sub_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Data yang digunakan :"
             android:textAlignment="center" />
 
-        <TextView
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="80dp"-->
+<!--            android:text="{ 13.27, 1.77, 10.46, 11.6, -3.87, 14.63, 13.32, 19.2, 14.1, 14.97, 6.42, 23.56, 9.56, 11.63, 5.15, 0.45, 29.16, 5.51, 18.18, -0.23, 0.03, 13.36, 7.77, 13.39, 4.28, 12.68, 13.52, 17.04, 10.13, 20.28, -6.74, 8.44, 12.48 }"-->
+<!--            android:textAlignment="center" />-->
+
+        <Spinner
+            android:id="@+id/spinner_year_moving_avg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="{ 13.27, 1.77, 10.46, 11.6, -3.87, 14.63, 13.32, 19.2, 14.1, 14.97, 6.42, 23.56, 9.56, 11.63, 5.15, 0.45, 29.16, 5.51, 18.18, -0.23, 0.03, 13.36, 7.77, 13.39, 4.28, 12.68, 13.52, 17.04, 10.13, 20.28, -6.74, 8.44, 12.48 }"
-            android:textAlignment="center" />
+            android:layout_below="@id/sub_title"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="spinner_year"
+            android:entries="@array/year"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/input"
