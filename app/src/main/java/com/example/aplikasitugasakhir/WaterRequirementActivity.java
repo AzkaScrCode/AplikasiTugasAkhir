@@ -75,7 +75,7 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
         map.put(11,Double.valueOf(et11.getText().toString()));
         map.put(12,Double.valueOf(et12.getText().toString()));
 
-        DatabaseReference reference = database.getReference("air wet normal " + year);
+        DatabaseReference reference = database.getReference("Water Balance/"+yearSpinner);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -135,7 +135,7 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
                     wetNormalDry.setHari(hari);
                     wetNormalDry.setDry(dryD);
                     wetNormalDry.setNormal(normalD);
-                    wetNormalDry.setWet(normalD);
+                    wetNormalDry.setWet(wetD);
                     wetNormalDry.setWaterReq(req);
                     wetNormalDry.setDryBalance(dryBalance);
                     wetNormalDry.setNormalBalance(normalBalance);
@@ -148,9 +148,10 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
 
                 }
 
-                DatabaseReference ref = database.getReference("water-requirements " + year);
+                DatabaseReference ref = database.getReference("Water Requirements");
+                ref.child(String.valueOf(year)).setValue(wetNormalDries);
                 //ref.child("water-requirements " + year).setValue(wetNormalDries);
-                ref.setValue(wetNormalDries);
+//                ref.setValue(wetNormalDries);
 
             }
 
