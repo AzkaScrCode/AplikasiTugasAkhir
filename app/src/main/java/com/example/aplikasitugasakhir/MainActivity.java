@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button tbmanual, tbprediksi, btWetDryNormal, mBtnLiatPrediksi, mBtnWaterReq;
+    private Button tbDelete, tbprediksi, btWetDryNormal, mBtnLiatPrediksi, mBtnWaterReq;
     private Button mBtnGraphicWaterReq, mBtnMovingAvg;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tbmanual = findViewById(R.id.bt_inputmn);
+        tbDelete = findViewById(R.id.bt_delete);
         tbprediksi = findViewById(R.id.bt_tambahprediksi);
         btWetDryNormal = findViewById(R.id.bt_wet_dry_normal);
         mBtnLiatPrediksi = findViewById(R.id.bt_liat_prediksi);
@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         mBtnGraphicWaterReq = findViewById(R.id.bt_graphic_water_req);
         mBtnMovingAvg = findViewById(R.id.bt_moving_avg);
 
-        tbmanual.setOnClickListener(new View.OnClickListener() {
+        tbDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), InputManualActivity.class);
+                Intent intent = new Intent(v.getContext(), DeleteActivity.class);
                 startActivity(intent);
             }
         });

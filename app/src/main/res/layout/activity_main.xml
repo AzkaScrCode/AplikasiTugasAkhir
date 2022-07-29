@@ -23,10 +23,10 @@
         android:layout_below="@id/tv_title_main">
 
         <Button
-            android:id="@+id/bt_inputmn"
+            android:id="@+id/bt_delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Input Manual"
+            android:text="Delete"
             android:background="@drawable/button"
             />
         <Button
