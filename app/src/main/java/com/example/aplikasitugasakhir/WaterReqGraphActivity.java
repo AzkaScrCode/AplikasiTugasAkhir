@@ -72,9 +72,9 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
 
         String year = (String) mSpinnerYear.getSelectedItem();
 
-        reference = database.getReference("water-requirements " + year);
+        reference = database.getReference("Water Requirements").child(year);
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.orderByChild("hari").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -89,6 +89,7 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
                 DataPoint[] dp3 = new DataPoint[(int) snapshot.getChildrenCount()];
 
                 int index = 0;
+
 
                 for(DataSnapshot item : snapshot.getChildren()){
 
