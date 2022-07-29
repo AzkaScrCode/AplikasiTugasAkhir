@@ -61,7 +61,7 @@ public class GraphPrediksiActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
 
         String year = (String) mSpinner.getSelectedItem();
-        reference = database.getReference("Net Laju Tahun " + year);
+        reference = database.getReference("Data Net Laju").child(year);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,7 +70,14 @@ public class GraphPrediksiActivity extends AppCompatActivity implements View.OnC
                 int index = 0;
 
                 for (DataSnapshot myDataSnapshot : snapshot.getChildren()){
-                    NetLaju netLaju = myDataSnapshot.getValue(NetLaju.class);
+                    String hari = myDataSnapshot.getKey();
+
+                    Object o = myDataSnapshot.getValue();
+                    String netLajuStr = String.valueOf(o);
+                    Float laju = Float.valueOf(netLajuStr);
+
+                    NetLaju netLaju = new NetLaju(Integer.valueOf(hari), laju);
+
                     dp[index] = new DataPoint(netLaju.getHari(), netLaju.getNetLaju());
                     index++;
                 }
