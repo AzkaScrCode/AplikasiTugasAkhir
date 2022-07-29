@@ -60,7 +60,7 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
         mBtnPrediksi.setOnClickListener(this);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
+        reference = database.getReference("Data Net Laju");
 
     }
 
@@ -78,19 +78,20 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<String> tahuns = new ArrayList<>();
-                Map<Long, List<Float>> nets = new HashMap<>();
+                Map<String, List<Float>> nets = new HashMap<>();
 
                 for (int i = startYear; i <= year-1; i++) {
-                    tahuns.add("Net Laju Tahun " + i);
+                    tahuns.add(String.valueOf(i));
                 }
 
                 for (String tahun : tahuns) {
                     for (DataSnapshot item : snapshot.child(tahun).getChildren()) {
 
-                        Long hari = item.child("hari").getValue(Long.class);
-                        Object o = item.child("netLaju").getValue();
+                        String hari = item.getKey();
+                        Object o = item.getValue();
                         String netLajuStr = String.valueOf(o);
                         Float netLaju = Float.valueOf(netLajuStr);
+
 
                         if (nets.get(hari) == null) {
                             List<Float> floats = new ArrayList<>();
@@ -103,8 +104,9 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
                 }
 
                 List<NetLaju> netLajus = new ArrayList<>();
+                Map<String, Float> netLajus2 = new HashMap<>();
 
-                for (Map.Entry<Long, List<Float>> entry : nets.entrySet()) {
+                for (Map.Entry<String, List<Float>> entry : nets.entrySet()) {
 
                     List<Float> floats = entry.getValue();
                     float sum = 0f;
@@ -117,11 +119,13 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
 
                     NetLaju netLaju = new NetLaju(Integer.valueOf(entry.getKey().toString()), avg);
                     netLajus.add(netLaju);
+
+                    netLajus2.put(entry.getKey(), avg);
                 }
 
 
-                DatabaseReference ref = database.getReference("Net Laju Tahun " + yearSpinner);
-                ref.setValue(netLajus);
+                DatabaseReference ref = database.getReference("Data Net Laju");
+                ref.child(yearSpinner).setValue(netLajus2);
 
                 Notification notification = new Notification("Data prediksi tahun " + year + " sudah di update",
                         "Petani");

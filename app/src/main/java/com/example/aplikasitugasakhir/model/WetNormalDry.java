@@ -2,6 +2,7 @@ package com.example.aplikasitugasakhir.model;
 
 public class WetNormalDry {
     private long hari;
+    private String hariString;
     private double wet;
     private double normal;
     private double dry;
@@ -22,6 +23,14 @@ public class WetNormalDry {
         this.normal = normal;
         this.dry = dry;
     }
+
+    public WetNormalDry(String hariString, double wet, double normal, double dry) {
+        this.hariString = hariString;
+        this.wet = wet;
+        this.normal = normal;
+        this.dry = dry;
+    }
+
 
     public long getHari() {
         return hari;
