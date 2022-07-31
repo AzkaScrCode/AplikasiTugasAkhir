@@ -2,6 +2,7 @@
     <string name="app_name">AplikasiTugasAkhir</string>
 
     <string-array name="year">
+        <item>2021</item>
         <item>2022</item>
         <item>2023</item>
         <item>2024</item>
