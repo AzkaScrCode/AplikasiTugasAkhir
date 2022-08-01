@@ -1,165 +1,457 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".WaterRequirementActivity">
-
-    <Spinner
-        android:id="@+id/spinner_tahun_wat_req"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:minHeight="48dp"
-        android:entries="@array/year"
-        />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".WaterRequirementActivity">
 
-        <EditText
-            android:id="@+id/et_watreq_1"
+        <Spinner
+            android:id="@+id/spinner_tahun_wat_req"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:hint="1"
-            android:minHeight="24dp" />
+            android:layout_margin="16dp"
+            android:entries="@array/year"
+            android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/et_watreq_2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="2"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_watreq_3"
+            <EditText
+                android:id="@+id/et_watreq_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="1"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="2"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="3"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="3"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="4"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="5"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="6"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="7"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="8"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="9"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="10"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="11"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="12"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="13"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="14"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="15"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="16"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="17"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="18"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="19"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="20"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="21"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="22"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="23"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="24"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="25"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="26"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="27"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="28"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="29"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="30"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="31"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="32"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="33"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_watreq_34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="34"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="35"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+
+            <EditText
+                android:id="@+id/et_watreq_36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="36"
+                android:inputType="numberDecimal"
+                android:minHeight="24dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_calculate_req"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="Hitung"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
-        <EditText
-            android:id="@+id/et_watreq_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="4"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-        <EditText
-            android:id="@+id/et_watreq_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="5"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-
-        <EditText
-            android:id="@+id/et_watreq_6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="6"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
-        <EditText
-            android:id="@+id/et_watreq_7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="7"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:minHeight="24dp"/>
-        <EditText
-            android:id="@+id/et_watreq_8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="8"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-
-        <EditText
-            android:id="@+id/et_watreq_9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="9"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
-        <EditText
-            android:id="@+id/et_watreq_10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="10"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-        <EditText
-            android:id="@+id/et_watreq_11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="11"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-
-        <EditText
-            android:id="@+id/et_watreq_12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="12"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:minHeight="24dp"/>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/bt_calculate_req"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Hitung"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</LinearLayout>
+</ScrollView>
