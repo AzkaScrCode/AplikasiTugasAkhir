@@ -2,6 +2,8 @@ package com.example.aplikasitugasakhir;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasitugasakhir.adapter.WaterReqAdapter;
+import com.example.aplikasitugasakhir.model.WaterBalance;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +24,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WaterReqGraphActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,6 +37,7 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
     private Spinner mSpinnerYear;
     private Button mBtnTampilkanGraph;
     private GraphView mGraphView;
+    private RecyclerView mRecyclerView;
 
     private LineGraphSeries series;
     private LineGraphSeries series2;
@@ -46,6 +53,7 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
         mSpinnerYear = findViewById(R.id.spinner_tahun_water_graph);
         mBtnTampilkanGraph = findViewById(R.id.button_tampilkan_req_graph);
         mGraphView = findViewById(R.id.graph_wat_req);
+        mRecyclerView = findViewById(R.id.rv_wat_req);
 
         mBtnTampilkanGraph.setOnClickListener(this);
 
@@ -64,6 +72,9 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
         GridLabelRenderer gridLabelRenderer = mGraphView.getGridLabelRenderer();
         gridLabelRenderer.setHorizontalAxisTitle("Hari");
         gridLabelRenderer.setVerticalAxisTitle("Net Laju (mm/hari)");
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
@@ -90,6 +101,7 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
 
                 int index = 0;
 
+                List<WaterBalance> waterBalances = new ArrayList<>();
 
                 for(DataSnapshot item : snapshot.getChildren()){
 
@@ -111,12 +123,18 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
                     dp2[index] = new DataPoint(hari, normalBalance);
                     dp3[index] = new DataPoint(hari, wetBalance);
 
+                    waterBalances.add(new WaterBalance(hari,wetBalance,normalBalance, dryBalance));
+
                     index++;
                 }
 
                 series.resetData(dp);
                 series2.resetData(dp2);
                 series3.resetData(dp3);
+
+
+                WaterReqAdapter adapter = new WaterReqAdapter(waterBalances);
+                mRecyclerView.setAdapter(adapter);
             }
 
             @Override
