@@ -133,6 +133,7 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
                     wb.setWetStatus(wetStatus);
                     wb.setNormalStatus(normalStatus);
                     wb.setDryStatus(dryStatus);
+                    wb.setHari(hari);
 
                     waterBalances.add(wb);
 
