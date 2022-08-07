@@ -34,10 +34,15 @@ public class WaterReqAdapter extends RecyclerView.Adapter<WaterReqAdapter.WaterR
     @Override
     public void onBindViewHolder(@NonNull WaterReqViewHolder holder, int position) {
         WaterBalance waterBalance = adapters.get(position);
+
+        String dry = String.valueOf(waterBalance.getDry()).concat("(").concat(waterBalance.getDryStatus()).concat(")");
+        String wet = String.valueOf(waterBalance.getWet()).concat("(").concat(waterBalance.getWetStatus()).concat(")");
+        String normal = String.valueOf(waterBalance.getNormal()).concat("(").concat(waterBalance.getNormalStatus()).concat(")");
+
         holder.mHari.setText(String.valueOf(waterBalance.getHari()));
-        holder.mDry.setText(String.valueOf(waterBalance.getDry()));
-        holder.mWet.setText(String.valueOf(waterBalance.getWet()));
-        holder.mNormal.setText(String.valueOf(waterBalance.getNormal()));
+        holder.mDry.setText(dry);
+        holder.mWet.setText(wet);
+        holder.mNormal.setText(normal);
     }
 
     @Override
@@ -47,7 +52,7 @@ public class WaterReqAdapter extends RecyclerView.Adapter<WaterReqAdapter.WaterR
 
     public class WaterReqViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mHari, mWet, mNormal, mDry;
+        TextView mHari, mWet, mNormal, mDry, mStatus;
 
         public WaterReqViewHolder(@NonNull View itemView) {
             super(itemView);
