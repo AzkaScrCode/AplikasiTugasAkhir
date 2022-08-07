@@ -6,6 +6,9 @@ public class WaterBalance {
     private double wet;
     private double normal;
     private double dry;
+    private String normalStatus;
+    private String wetStatus;
+    private String dryStatus;
 
     public WaterBalance() {
     }
@@ -16,6 +19,8 @@ public class WaterBalance {
         this.normal = normal;
         this.dry = dry;
     }
+
+
 
     public long getHari() {
         return hari;
@@ -47,5 +52,29 @@ public class WaterBalance {
 
     public void setDry(double dry) {
         this.dry = dry;
+    }
+
+    public String getNormalStatus() {
+        return normalStatus;
+    }
+
+    public void setNormalStatus(String normalStatus) {
+        this.normalStatus = normalStatus;
+    }
+
+    public String getWetStatus() {
+        return wetStatus;
+    }
+
+    public void setWetStatus(String wetStatus) {
+        this.wetStatus = wetStatus;
+    }
+
+    public String getDryStatus() {
+        return dryStatus;
+    }
+
+    public void setDryStatus(String dryStatus) {
+        this.dryStatus = dryStatus;
     }
 }

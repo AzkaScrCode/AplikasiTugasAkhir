@@ -106,6 +106,9 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
                 for(DataSnapshot item : snapshot.getChildren()){
 
                     Long hari = (Long) item.child("hari").getValue();
+                    String wetStatus = (String) item.child("wetStatus").getValue();
+                    String normalStatus = (String) item.child("normalStatus").getValue();
+                    String dryStatus = (String) item.child("dryStatus").getValue();
                     
                     Object objDry = item.child("dryBalance").getValue();
                     Object objNormal = item.child("normalBalance").getValue();
@@ -123,7 +126,15 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
                     dp2[index] = new DataPoint(hari, normalBalance);
                     dp3[index] = new DataPoint(hari, wetBalance);
 
-                    waterBalances.add(new WaterBalance(hari,wetBalance,normalBalance, dryBalance));
+                    WaterBalance wb = new WaterBalance();
+                    wb.setWet(wetBalance);
+                    wb.setNormal(normalBalance);
+                    wb.setDry(dryBalance);
+                    wb.setWetStatus(wetStatus);
+                    wb.setNormalStatus(normalStatus);
+                    wb.setDryStatus(dryStatus);
+
+                    waterBalances.add(wb);
 
                     index++;
                 }
