@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aplikasitugasakhir.model.NetLaju;
 import com.google.firebase.database.DataSnapshot;
@@ -45,7 +46,8 @@ public class MulaiActivity extends AppCompatActivity {
 
     private EditText input;
     private Button proses;
-    private TextView tvmad, tvmse, tvmape, tvakurasi, tvperamalan; /*tverror, tvad, tvse, tvape;*/ /*tvhperamalan*/;
+    private TextView tvmad, tvmse, tvmape, tvakurasi, tvperamalan; /*tverror, tvad, tvse, tvape;*/ /*tvhperamalan*/
+    ;
     private Spinner mSpinnerYear;
 
     private FirebaseDatabase database;
@@ -84,7 +86,7 @@ public class MulaiActivity extends AppCompatActivity {
                 String yearSpinner = (String) mSpinnerYear.getSelectedItem();
                 //String periodeSpinner = (String) mSpinnerPeriode.getSelectedItem();
 
-                int year = Integer.valueOf(yearSpinner) ;
+                int year = Integer.valueOf(yearSpinner);
                 int startYear = (year - 1) - periode;
 
                 reference.addValueEventListener(new ValueEventListener() {
@@ -94,139 +96,120 @@ public class MulaiActivity extends AppCompatActivity {
                         List<String> tahuns = new ArrayList<>();
                         Map<String, List<Float>> nets = new HashMap<>();
 
-                        for (int i = startYear; i <= year-1; i++) {
+                        for (int i = startYear; i <= year - 1; i++) {
                             tahuns.add(String.valueOf(i));
                         }
 
-                        for (String tahun : tahuns) {
-                            for (DataSnapshot item : snapshot.child(tahun).getChildren()) {
 
-                                //Long hari = item.child("hari").getValue(Long.class);
-                                String hari = item.getKey();
-                                Object o = item.getValue();
+                        List<Float> netLajus = new ArrayList<>();
+                        for (DataSnapshot item : snapshot.getChildren()) {
+
+
+                            if (item.hasChild("1")) {
+                                Object o = item.child("1").getValue();
                                 String netLajuStr = String.valueOf(o);
                                 Float netLaju = Float.valueOf(netLajuStr);
+                                netLajus.add(netLaju);
 
-                                if (nets.get(hari) == null) {
-                                    List<Float> floats = new ArrayList<>();
-                                    floats.add(netLaju);
-                                    nets.put(hari, floats);
-                                } else {
-                                    nets.get(hari).add(netLaju);
-                                }
-                            }
-                        }
-
-                        List<NetLaju> netLajus = new ArrayList<>();
-
-                        for (Map.Entry<String , List<Float>> entry : nets.entrySet()) {
-
-                            List<Float> floats = entry.getValue();
-                            float sum = 0f;
-
-                            for (Float netLaju : floats) {
-                                sum = sum + netLaju;
+                                continue;
                             }
 
-                            float avg = sum / floats.size();
-
-                            NetLaju netLaju = new NetLaju(Integer.valueOf(entry.getKey().toString()), avg);
-                            netLajus.add(netLaju);
                         }
 
-                        double[] angka = new double[netLajus.size()];
-                        double[] angka2 = new double[netLajus.size()];
+                        //peramalan
+                        int pos = year - 1988;
+                        int posAkhir = (year - 1) - 1988;
+                        int posAwal = (year - 1 - periode) - 1988;
 
-                       for(int i = 0; i < netLajus.size();i++){
-                           angka[i] = netLajus.get(i).getNetLaju();
-                           angka[2] = netLajus.get(i).getNetLaju();
-                       }
+                        float sumRamal = 0f;
+                        for (int i = posAwal; i <= posAkhir; i++) {
+                            sumRamal += netLajus.get(i);
+                        }
 
+                        sumRamal /= (periode + 1);
 
-                        //Menghitung peramalan
-                        float[] peramalan = new float[angka.length];
-                        for (int i = 0; i + periode <= angka2.length; i++) {
-                            float sum = 0;
-                            for (int j = i; j < i + periode; j++) {
-                                sum += angka2[j];
+                        tvperamalan.setText(String.valueOf(sumRamal));
+
+                        List<Float>avgNoZero = new ArrayList<>();
+
+                        //error prediction
+                        List<Float> movingAvg = new ArrayList<>();
+                        for (int i = 0; i < netLajus.size(); i++) {
+
+                            if ((i - periode) < 0) {
+                                movingAvg.add(0f);
+                                continue;
                             }
-                            peramalan[i] = sum / periode;
-                            tvperamalan.setText(String.valueOf(peramalan[i]));
-                        }
 
-                        //Array Baru
-                        int L = -1, R = periode;
-                        int n = angka.length;
-                        int res_size = deleteElement(angka, L, R, n);
-                        for (int i = 0; i < res_size; i++) {
-                        }
+                            int awal = i - periode;
+                            float sumX = 0f;
 
-                        //Error Predict
-                        float[] errorpredict = new float[angka.length];
-                        for (int i = 0; i < res_size; i++) {
-                            errorpredict[i] = (float) (angka[i] - peramalan[i]);
-                        }
-
-                        //Absolute Deviation
-                        float[] mad = new float[errorpredict.length];
-                        for (int i = 0; i < errorpredict.length; i++) {
-                            mad[i] = errorpredict[i];
-                            if (errorpredict[i] > 0) {
-                                mad[i] = errorpredict[i] * 1;
-
-                            } else if (errorpredict[i] < 0) {
-                                float mad2 = errorpredict[i] * -1;
-                                mad[i] = mad2;
+                            for (int j = awal; j <= i; j++) {
+                                sumX += netLajus.get(j);
                             }
+
+                            sumX /= (periode + 1);
+                            movingAvg.add(sumX);
+                            avgNoZero.add(netLajus.get(i));
                         }
 
-                        //Mean Absolute Deviation
-                        float sum1 = 0;
-                        for (int i = 0; i < mad.length; i++) {
-                            sum1 += mad[i] / (mad.length - periode);
-                        }
-                        //hasil1 = sum1;
-                        tvmad.setText(String.valueOf(sum1));
+                        float yearmoving = movingAvg.get(pos-1);
 
-                        //Square Error
-                        float[] mse = new float[mad.length];
-                        for (int i = 0; i < mad.length; i++) {
-                            mse[i] = (mad[i] * mad[i]);
-                        }
+                        //MAD
+                        List<Float> mad = new ArrayList<>();
+                        for(int i =0; i < (pos-1); i++){
 
-                        //Mean Square Error
-                        float sum2 = 0;
-                        for (int i = 0; i < mse.length; i++) {
-                            sum2 += mse[i] / (mse.length - periode);
-                        }
-                        //hasil2 = sum2;
-                        tvmse.setText(String.valueOf(sum2));
-
-                        //Absolute Percentage Error
-                        float[] mape = new float[angka.length];
-                        for (int i = 0; i < res_size; i++) {
-                            mape[i] = (float) ((angka[i] - peramalan[i]) / angka[i]);
-                            if (mape[i] > 0) {
-                                mape[i] = mape[i] * 1;
-                            } else if (mape[i] < 0) {
-                                mape[i] = mape[i] * -1;
+                            if(movingAvg.get(i) == 0f){
+                                continue;
                             }
+
+                            float netLaju = netLajus.get(i+1);
+                            float avg = movingAvg.get(i);
+
+                            mad.add(Math.abs(netLaju-avg));
                         }
 
-                        //Mean Absolute Percentage Error
-                        float sum3 = 0;
-                        for (int i = 0; i < mape.length; i++) {
-                            sum3 += mape[i] / (mape.length - periode);
+                        float sumMad = 0f;
+                        for(Float item : mad) {
+                            sumMad += item;
                         }
-                        //hasil3 = sum3;
-                        tvmape.setText(String.valueOf(sum3));
 
-                        float akurasi = 100 - sum3;
-                        //hasil4 = akurasi;
+                        sumMad /= mad.size();
+
+                        tvmad.setText(String.valueOf(sumMad));
+
+                        //MSE
+                        float mse = 0f;
+                        for(Float item : mad) {
+                            mse += (item * item);
+                        }
+
+                        mse /= mad.size();
+                        tvmse.setText(String.valueOf(mse));
+
+
+                        //MAPE
+                        float mape = 0f;
+                        for(int i = 0; i < mad.size(); i++){
+
+                            float m = mad.get(i);
+                            float avg = avgNoZero.get(i+1);
+
+                            float val = (m/avg);
+
+                            mape += Math.abs(val);
+
+                        }
+
+                        mape /= mad.size();
+
+                        tvmape.setText(String.valueOf(mape));
+
+
+                        float akurasi = 100f - mape;
                         tvakurasi.setText(String.valueOf(akurasi));
 
                     }
-
 
 
                     @Override
@@ -234,7 +217,6 @@ public class MulaiActivity extends AppCompatActivity {
 
                     }
                 });
-
 
 
             }
