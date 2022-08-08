@@ -69,7 +69,7 @@ public class MulaiActivity extends AppCompatActivity {
         mSpinnerYear = findViewById(R.id.spinner_year_moving_avg);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
+        reference = database.getReference("Data Net Laju");
 
         proses.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,17 +92,18 @@ public class MulaiActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         List<String> tahuns = new ArrayList<>();
-                        Map<Long, List<Float>> nets = new HashMap<>();
+                        Map<String, List<Float>> nets = new HashMap<>();
 
                         for (int i = startYear; i <= year-1; i++) {
-                            tahuns.add("Net Laju Tahun " + i);
+                            tahuns.add(String.valueOf(i));
                         }
 
                         for (String tahun : tahuns) {
                             for (DataSnapshot item : snapshot.child(tahun).getChildren()) {
 
-                                Long hari = item.child("hari").getValue(Long.class);
-                                Object o = item.child("netLaju").getValue();
+                                //Long hari = item.child("hari").getValue(Long.class);
+                                String hari = item.getKey();
+                                Object o = item.getValue();
                                 String netLajuStr = String.valueOf(o);
                                 Float netLaju = Float.valueOf(netLajuStr);
 
@@ -118,7 +119,7 @@ public class MulaiActivity extends AppCompatActivity {
 
                         List<NetLaju> netLajus = new ArrayList<>();
 
-                        for (Map.Entry<Long, List<Float>> entry : nets.entrySet()) {
+                        for (Map.Entry<String , List<Float>> entry : nets.entrySet()) {
 
                             List<Float> floats = entry.getValue();
                             float sum = 0f;
