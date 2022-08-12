@@ -48,7 +48,11 @@ public class GraphPrediksiActivity extends AppCompatActivity implements View.OnC
         mGraphView.addSeries(series);
 
         mGraphView.getViewport().setScalable(true);
-        mGraphView.getViewport().setScalableY(true);
+        mGraphView.getViewport().setScrollable(true);
+
+        mGraphView.getViewport().setXAxisBoundsManual(true);
+        mGraphView.getViewport().setMinX(1d);
+        mGraphView.getViewport().setMaxX(365d);
 
 
         GridLabelRenderer gridLabelRenderer = mGraphView.getGridLabelRenderer();

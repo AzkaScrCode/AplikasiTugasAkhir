@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -60,13 +62,29 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
         series = new LineGraphSeries();
         series2 = new LineGraphSeries();
         series3 = new LineGraphSeries();
+
+        series.setColor(Color.RED);
+        series.setTitle("dry");
+
+        series2.setColor(Color.BLUE);
+        series2.setTitle("normal");
+
+        series3.setColor(Color.GREEN);
+        series3.setTitle("wet");
         
         mGraphView.addSeries(series);
         mGraphView.addSeries(series2);
         mGraphView.addSeries(series3);
 
         mGraphView.getViewport().setScalable(true);
-        mGraphView.getViewport().setScalableY(true);
+        mGraphView.getViewport().setScrollable(true);
+
+        mGraphView.getViewport().setXAxisBoundsManual(true);
+        mGraphView.getViewport().setMinX(1d);
+        mGraphView.getViewport().setMaxX(365d);
+
+        mGraphView.getLegendRenderer().setVisible(true);
+        mGraphView.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
 
 
         GridLabelRenderer gridLabelRenderer = mGraphView.getGridLabelRenderer();
@@ -139,6 +157,8 @@ public class WaterReqGraphActivity extends AppCompatActivity implements View.OnC
 
                     index++;
                 }
+
+
 
                 series.resetData(dp);
                 series2.resetData(dp2);
