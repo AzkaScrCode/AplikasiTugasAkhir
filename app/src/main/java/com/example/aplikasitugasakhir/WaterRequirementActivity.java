@@ -131,7 +131,7 @@ public class WaterRequirementActivity extends AppCompatActivity implements View.
 
         DatabaseReference reference = database.getReference("Water Balance/"+yearSpinner);
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
