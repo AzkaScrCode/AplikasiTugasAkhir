@@ -55,7 +55,7 @@ public class WaterAvailabilityActivity extends AppCompatActivity implements View
         int initYear = 1988;
         int year = Integer.valueOf(yearSpinner);
 
-        database.getReference("Data Net Laju").addValueEventListener(new ValueEventListener() {
+        database.getReference("Data Net Laju").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Map<String, List<Double>> nets = new TreeMap<>();

@@ -74,7 +74,8 @@ public class PrediksiActivity extends AppCompatActivity implements View.OnClickL
         int year = Integer.valueOf(yearSpinner) ;
         int startYear = (year - 1) - periode;
 
-        reference.addValueEventListener(new ValueEventListener() {
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<String> tahuns = new ArrayList<>();
