@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasitugasakhir.adapter.WaterBalanceAdapter;
 import com.example.aplikasitugasakhir.adapter.WaterReqAdapter;
 import com.example.aplikasitugasakhir.model.WaterBalance;
 import com.example.aplikasitugasakhir.model.WetNormalDry;
@@ -22,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,7 +126,10 @@ public class WaterAvailabilityActivity extends AppCompatActivity implements View
                 DatabaseReference ref = database.getReference("Water Balance");
                 ref.child(String.valueOf(year)).setValue(wets);
 
-                WaterReqAdapter adapter = new WaterReqAdapter(wets);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Collections.sort(wets, Comparator.comparing(WaterBalance::getHari));
+                }
+                WaterBalanceAdapter adapter = new WaterBalanceAdapter(wets);
                 mRecyclerView.setAdapter(adapter);
 
                 Toast.makeText(view.getContext(),"Success", Toast.LENGTH_SHORT).show();
