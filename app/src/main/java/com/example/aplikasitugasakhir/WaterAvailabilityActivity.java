@@ -2,6 +2,8 @@ package com.example.aplikasitugasakhir;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasitugasakhir.adapter.WaterReqAdapter;
 import com.example.aplikasitugasakhir.model.WaterBalance;
 import com.example.aplikasitugasakhir.model.WetNormalDry;
 import com.google.firebase.database.DataSnapshot;
@@ -32,12 +35,14 @@ public class WaterAvailabilityActivity extends AppCompatActivity implements View
 
     private Button btnHitungWet;
     private Spinner mSpinnerWaterAvailYear;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_availability);
 
+        mRecyclerView = findViewById(R.id.rv_wat_balance);
         mSpinnerWaterAvailYear = findViewById(R.id.spinner_tahun_water_avail);
         btnHitungWet = findViewById(R.id.button_hitung_wet);
         btnHitungWet.setOnClickListener(this);
@@ -45,6 +50,8 @@ public class WaterAvailabilityActivity extends AppCompatActivity implements View
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
 
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
     @Override
@@ -115,7 +122,9 @@ public class WaterAvailabilityActivity extends AppCompatActivity implements View
 
                 DatabaseReference ref = database.getReference("Water Balance");
                 ref.child(String.valueOf(year)).setValue(wets);
-//                ref.setValue(wets);
+
+                WaterReqAdapter adapter = new WaterReqAdapter(wets);
+                mRecyclerView.setAdapter(adapter);
 
                 Toast.makeText(view.getContext(),"Success", Toast.LENGTH_SHORT).show();
             }
